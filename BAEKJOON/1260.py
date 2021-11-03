@@ -2,6 +2,7 @@ import sys
 sys.setrecursionlimit(10**8)
 read=sys.stdin.readline
 
+
 n,m,v=map(int,read().split())
 
 edge=[[0]*(n+1) for _ in range(n+1)]
@@ -26,16 +27,7 @@ def dfs(node):
         if visit_D[i]==False and edge[node][i]:
             dfs(i)
 
-def bfs(node):
 
-    visit_B[node]=True
-    print(node,end=' ')
-    for i in range(1,n+1):
-        if visit_B[i]==False and edge[node][i] and not(i in Q):
-            Q.append(i)
-        
-    if Q:
-        bfs(Q.pop(0))
 
 visit=[False]*(n+1)
 def new_bfs(node):
@@ -47,7 +39,17 @@ def new_bfs(node):
             Q.append(Next)
     if Q:
         new_bfs(Q.pop(0))
+        
+def bfs(node):
 
+    visit_B[node]=True
+    print(node,end=' ')
+    for i in range(1,n+1):
+        if visit_B[i]==False and edge[node][i] and not(i in Q):
+            Q.append(i)
+        
+    if Q:
+        bfs(Q.pop(0))
 dfs(v)
 print('')
 bfs(v)
