@@ -41,7 +41,7 @@ def comb(arr,num):
 
 cnt=0
 for p,q,r in comb(gcd_list,3):
-    if p*q*r==K:
+    if p*q*r%K==0:
         cnt+=1
 
 print(cnt)
