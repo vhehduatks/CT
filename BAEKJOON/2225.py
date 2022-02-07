@@ -1,5 +1,6 @@
 import sys
 read=sys.stdin.readline
+mod=1000000000
 
 N,K=map(int,read().split())
 
@@ -14,4 +15,4 @@ for k in range(K+1):
         else:
             dp[k][n]=dp[k-1][n]+dp[k][n-1]
 
-print(dp[K][N])
+print(dp[K][N]%mod)

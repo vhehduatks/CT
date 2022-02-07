@@ -5,6 +5,9 @@ T=int(read())
 for _ in range(T):
     n=int(read())
     arr=[list(map(int,read().split())) for _ in range(2)]
+    if n==1:
+        print(max(arr[0][0],arr[1][0]))
+        continue
     dp=[[-1]*n for _ in range(2)]
     dp[0][0]=arr[0][0]
     dp[1][0]=arr[1][0]

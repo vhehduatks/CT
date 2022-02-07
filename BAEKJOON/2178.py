@@ -24,7 +24,7 @@ def bfs(i,j):
 
             if (0<=next_i and next_i<N) and (0<=next_j and next_j<M):
 
-                if graph[next_i][next_j]!=0 and visit[next_i][next_j]==False:
+                if graph[next_i][next_j]==1 and visit[next_i][next_j]==False:
                     q.append((next_i,next_j))
                     visit[next_i][next_j]=True
                     graph[next_i][next_j]+=graph[q_i][q_j]
