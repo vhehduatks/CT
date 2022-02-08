@@ -19,7 +19,7 @@ def bfs(i,j):
 			if 0<=ni and ni<nm and 0<=nj and nj<nm:
 				if matrix[ni][nj]==0:
 					matrix[ni][nj]=matrix[qi][qj]+1
-					Q.append((ni,nj))
+					Q.append((ni,nj))						
 
 for _ in range(N):
 	nm=int(read())
