@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 read=sys.stdin.readline
 
 N,M,K=map(int,read().split())
@@ -10,9 +11,11 @@ for _ in range(N):
 
 
 trees=[]
+
 for _ in range(M):
 	trees.append(list(map(int,read().split()))+[1])
-trees=sorted(trees,key=lambda x:-x[2])	
+
+trees=deque(sorted(trees,key=lambda x:-x[2]))
 
 i_=[0,0,1,-1,1,-1,-1,1]
 j_=[1,-1,0,0,1,-1,1,-1]
@@ -26,7 +29,7 @@ cnt=0
 for year in range(K):
 	trees_=[]
 	while trees:
-		t=trees.pop()
+		t=trees.popleft()
 		if t[3]:
 
 			if A[t[0]][t[1]]<t[2]:
@@ -47,15 +50,11 @@ for year in range(K):
 
 	
 	trees+=trees_
-	trees=sorted(trees,key=lambda x:-x[2])
+	#trees=sorted(trees,key=lambda x:x[2])
 
 	for n in range(1,N+1):
-		for m in range(1,M+1):
+		for m in range(1,N+1):
 			A[n][m]+=(A_[n][m]+A__[n][m])
 			A__[n][m]=0
 
-for t in trees:
-	if t[3]:
-		cnt+=1
-
-print(cnt)
+print(len(trees))
