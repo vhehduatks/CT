@@ -12,7 +12,7 @@ for _ in range(N):
 trees=[]
 for _ in range(M):
 	trees.append(list(map(int,read().split()))+[1])
-trees=sorted(trees,key=lambda x:x[2])	
+trees=sorted(trees,key=lambda x:-x[2])	
 
 i_=[0,0,1,-1,1,-1,-1,1]
 j_=[1,-1,0,0,1,-1,1,-1]
@@ -25,7 +25,8 @@ def is_out(i,j):
 cnt=0
 for year in range(K):
 	trees_=[]
-	for t in trees:
+	while trees:
+		t=trees.pop()
 		if t[3]:
 
 			if A[t[0]][t[1]]<t[2]:
@@ -33,9 +34,10 @@ for year in range(K):
 				t[3]=0
 			else:
 				A[t[0]][t[1]]-=t[2]
-			
+				
 			t[2]+=1
-			
+
+			if t[3]:trees_.append(t)
 			if t[2]%5==0 and t[3]:
 				for k in range(8):
 					next_i=t[0]+i_[k]
@@ -45,7 +47,7 @@ for year in range(K):
 
 	
 	trees+=trees_
-	trees=sorted(trees,key=lambda x:x[2])
+	trees=sorted(trees,key=lambda x:-x[2])
 
 	for n in range(1,N+1):
 		for m in range(1,M+1):
