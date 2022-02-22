@@ -1,0 +1,4 @@
+{
+	"python.pythonPath": "/opt/homebrew/Caskroom/miniforge/base/bin/python",
+	"python.languageServer": "Pylance"
+}
