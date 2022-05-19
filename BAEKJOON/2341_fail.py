@@ -10,26 +10,28 @@ for _ in range(N):
 
 dp=[0]*51
 convert_list=[]
-code_list=[]
+code_list=''
+convert_dict={1:'00',86:'01',172:'10',256:'11'}
 
 def cost_func(convert_val,arr_val,w)->int:
+	global code_list
 	cost=sys.maxsize-1
-	code=0
+	code=''
 	min_convert=0
-	for i,convert in enumerate([1,86,172,256]):
+	for convert in [1,86,172,256]:
 		temp=abs(arr_val-convert)
 		if convert_val==convert:
 			if temp+w<cost:
 				cost=temp+w
-				code=i
+				code='0'
 				min_convert=convert
 		else:
 			if temp+3*w<cost:
 				cost=temp+3*w
-				code=i
+				code='1'+convert_dict[convert]
 				min_convert=convert
 
-	code_list.append(code)
+	code_list+=code
 	convert_list.append(min_convert)
 	return cost
 
@@ -59,7 +61,7 @@ def binary_search(K, num_list=[1,86,172,256]):  # 일반적인 이진탐색 함�
 
 
 convert_list.append(binary_search(arr[0]))
-
+code_list+=convert_dict[convert_list[0]]
 dp[0]=abs(convert_list[0]-arr[0])+2*W
 
 for i in range(1,N):
