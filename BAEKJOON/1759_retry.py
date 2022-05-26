@@ -14,7 +14,7 @@ def recur(depth):
 		return	
 	for i in range(depth,c):
 		ret.append(arr[i])
-		recur(i+1) # 처음에 for문은 0부터 c까지 가는데 그럼 for문이 1 일때 depth가 0 이면 arr[1]이 두번 들어갈 수 있음 
+		recur(i+1) # recur(depth+1)로 할 경우 처음에 for문은 0부터 c까지 가는데 그럼 for문이 1 일때 depth가 0 이면 arr[1]이 두번 들어갈 수 있음 
 		ret.pop()
 
 recur(0)
