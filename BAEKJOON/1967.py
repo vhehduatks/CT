@@ -2,13 +2,14 @@ import sys
 read=sys.stdin.readline
 
 n=int(read())
-graph=[]*(n+1)
+graph=[[] for _ in range(n+1)]
 visit=[False]*(n+1)
 
-for _ in range(n):
-	p,c,w=map(int,read().split())
-	graph[p].append((c,w))
-
+for _ in range(n-1):
+    p,c,w=map(int,read().split())
+    graph[p].append((c,w))
+    graph[c].append((p,w))
+    
 max_deep_node=None
 max_depth=0
 
